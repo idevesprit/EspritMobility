@@ -21,7 +21,8 @@ public class Commentaire implements Serializable {
     private String libelle;
     @Temporal(TemporalType.DATE)
     private Date dateCommentaire;
-    private int rating;
+    private int likeCommentaire;
+    private int dislikeCommentaire;
 
 
     @ManyToOne
