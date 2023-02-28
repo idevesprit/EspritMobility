@@ -11,7 +11,7 @@ import java.net.URI;
 
 
 @Service
-public class SMSService implements  ISMSService{
+public class SMSService {
         @Value("#{systemEnvironment['TWILIO_ACCOUNT_SID']}")
         private String ACCOUNT_SID;
 

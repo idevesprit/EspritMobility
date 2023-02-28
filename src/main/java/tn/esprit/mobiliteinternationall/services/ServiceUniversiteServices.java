@@ -9,7 +9,6 @@ import tn.esprit.mobiliteinternationall.entites.Universite;
 import tn.esprit.mobiliteinternationall.repositories.CandidatRepository;
 import tn.esprit.mobiliteinternationall.repositories.ServiceUniversiteRepository;
 import tn.esprit.mobiliteinternationall.repositories.UniversiteRepository;
-import tn.esprit.mobiliteinternationall.services.IServiceUniversiteServices;
 
 import java.util.List;
 
