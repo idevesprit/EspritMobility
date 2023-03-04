@@ -2,12 +2,18 @@ package tn.esprit.mobiliteinternationall.controllers;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.mobiliteinternationall.dto.MailRequest;
+import tn.esprit.mobiliteinternationall.dto.MailResponse;
 import tn.esprit.mobiliteinternationall.entites.Entretien;
 import tn.esprit.mobiliteinternationall.entites.StatutEntretien;
 import tn.esprit.mobiliteinternationall.repositories.EntretienRepository;
+import tn.esprit.mobiliteinternationall.services.EmailFelicitationService;
+import tn.esprit.mobiliteinternationall.services.EmailRefuseService;
 import tn.esprit.mobiliteinternationall.services.IServiceEntretien;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/entretien")
@@ -17,6 +23,8 @@ public class EntretienController {
 
     private IServiceEntretien iServiceEntretien;
     private final EntretienRepository entretienRepository;
+    private  final EmailFelicitationService emailFelicitationService;
+    private  final EmailRefuseService emailRefuseService;
 
     @PostMapping("/add")
     public Entretien addEntretien(@RequestBody Entretien E) {
@@ -45,6 +53,22 @@ public class EntretienController {
     @PostMapping("add/{idCandidature}/{idUniversite}")
     public void addEntretienAndAssignCandidatureAndUniversite(@RequestBody Entretien E,@PathVariable int idCandidature,@PathVariable int idUniversite) {
           iServiceEntretien.addEntretienAndAssignCandidatureAndUniversite(E,idCandidature,idUniversite);
+
+    }
+    @PostMapping("/sendEmailFelicitation")
+    public MailResponse sendEmailFelicitation(@RequestBody MailRequest request) {
+        Map<String, Object> model = new HashMap<>();
+        model.put("Name", request.getName());
+        model.put("location", "EspritMobility");
+        return emailFelicitationService.sendEmail(request, model);
+
+    }
+    @PostMapping("/sendingEmailRefuse")
+    public MailResponse sendEmailResuse(@RequestBody MailRequest request) {
+        Map<String, Object> model = new HashMap<>();
+        model.put("Name", request.getName());
+        model.put("location", "EspritMobility");
+        return emailRefuseService.sendEmail(request, model);
 
     }
 
