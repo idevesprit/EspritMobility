@@ -1,4 +1,4 @@
-package tn.esprit.mobiliteinternationall.entites;
+package com.supportportal.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,29 +30,29 @@ public class Candidat implements Serializable {
     private String photo;
 
 
-    @OneToMany(mappedBy = "candidat")
-    List<Candidature> candidatures;
+    // @OneToMany(mappedBy = "candidat")
+    //  List<Candidature> candidatures;
 
    // @OneToMany(mappedBy = "candidat")
   //  List<ServiceUniversite> serviceList;
 
-    @OneToMany(mappedBy = "candidat")
-    List<Reclamation> reclamations;
+    // @OneToMany(mappedBy = "candidat")
+    //  List<Reclamation> reclamations;
 
   //  @OneToMany(mappedBy = "candidat")
  //  List<Commentaire> commentaires;
 
-    @OneToMany(mappedBy = "candidat")
-    List<Chat> chats;
+    //  @OneToMany(mappedBy = "candidat")
+    //  List<Chat> chats;
 
-    @OneToMany(mappedBy = "candidat")
-    List<ChatTo> emetteur;
+    //  @OneToMany(mappedBy = "candidat")
+    //  List<ChatTo> emetteur;
 
-    @OneToMany(mappedBy = "candidat")
-    List<ChatTo> recepteur;
+    // @OneToMany(mappedBy = "candidat")
+    // List<ChatTo> recepteur;
 
-    @OneToMany(mappedBy = "candidat")
-    List<Favori> favoris;
+    //    @OneToMany(mappedBy = "candidat")
+    //  List<Favori> favoris;
 
 
 

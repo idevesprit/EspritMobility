@@ -1,4 +1,4 @@
-package tn.esprit.mobiliteinternationall.controllers;
+package com.supportportal.resource;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import tn.esprit.mobiliteinternationall.entites.Reclamation;
-import tn.esprit.mobiliteinternationall.repositories.ReclamationRepository;
-import tn.esprit.mobiliteinternationall.services.ReclamationService;
+
+import com.supportportal.domain.Reclamation;
+import com.supportportal.repository.ReclamationRepository;
+import com.supportportal.service.ReclamationService;
+
 
 @RestController
+@RequestMapping(path = { "/", "/user"})
 public class ReclamationController {
     @Autowired
     ReclamationService reclamationService;
@@ -26,7 +30,7 @@ public class ReclamationController {
     @Autowired
     ReclamationRepository reclamationRepository;
 
-    //http://localhost:9090/add-Reclamation
+    //http://localhost:8081/add-Reclamation
     @PostMapping("/add-Reclamation")
     @ResponseBody
     public Reclamation addReclamation (@RequestBody Reclamation r){
@@ -34,22 +38,22 @@ public class ReclamationController {
         return r;
     } 
     
-    //http://localhost:9090/retrieve-Reclamation/{id}
+    //http://localhost:8081/retrieve-Reclamation/{id}
  	@GetMapping("/retrieve-Reclamation/{id}")
  	@ResponseBody
  	public Reclamation retrieveReclamation(@PathVariable("id") int id) {
  		return reclamationService.retrieveReclamation(id);
  	}
  	
-    //http://localhost:9090/retrieve-all-Reclamations
+    //http://localhost:8081/retrieve-all-Reclamations
  	@GetMapping("/retrieve-all-Reclamations")
  	@ResponseBody
  	public List<Reclamation> getCReclamations() {
  		List<Reclamation> list = reclamationService.getallReclamations();
  		return list;
- 	}
+ 	} 
  	
- 	//http://localhost:9090/update-Reclamation/{idReclamation}
+ 	//http://localhost:8081/update-Reclamation/{idReclamation}
   	@PutMapping("/update-Reclamation/{idReclamation}")
   	@ResponseBody
   	public Reclamation updateReclamation(@PathVariable("idReclamation") int idReclamation, @RequestBody Reclamation reclamation){
@@ -57,7 +61,7 @@ public class ReclamationController {
         return reclamation;
   	}
  
- 	//http://localhost:9090/remove-Reclamation/{idReclamation}
+ 	//http://localhost:8081/remove-Reclamation/{idReclamation}
  	@DeleteMapping("/remove-Reclamation/{idReclamation}")
  	@ResponseBody
  	public void removeReclamation(@PathVariable("idReclamation") int idReclamation) {

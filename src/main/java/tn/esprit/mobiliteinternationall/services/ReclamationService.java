@@ -1,9 +1,10 @@
-package tn.esprit.mobiliteinternationall.services;
+package com.supportportal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.mobiliteinternationall.entites.Reclamation;
-import tn.esprit.mobiliteinternationall.repositories.ReclamationRepository;
+
+import com.supportportal.domain.Reclamation;
+import com.supportportal.repository.ReclamationRepository;
 
 import java.util.List;
 

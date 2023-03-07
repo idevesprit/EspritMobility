@@ -1,12 +1,13 @@
-package tn.esprit.mobiliteinternationall.services;
+package com.supportportal.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.mobiliteinternationall.entites.Candidat;
-import tn.esprit.mobiliteinternationall.repositories.CandidatRepository;
+import com.supportportal.domain.Candidat;
+import com.supportportal.repository.CandidatRepository;
+
 
 @Service
 public class ServiceCandidat implements ICandidatService {

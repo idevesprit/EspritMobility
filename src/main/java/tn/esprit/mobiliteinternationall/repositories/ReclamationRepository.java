@@ -1,8 +1,9 @@
-package tn.esprit.mobiliteinternationall.repositories;
+package com.supportportal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import tn.esprit.mobiliteinternationall.entites.Reclamation;
+
+import com.supportportal.domain.Reclamation;
 
 @Repository
 public interface ReclamationRepository extends JpaRepository<Reclamation, Integer> {

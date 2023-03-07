@@ -1,9 +1,10 @@
-package tn.esprit.mobiliteinternationall.services;
+package com.supportportal.service;
 
 import java.util.List;
 
-import tn.esprit.mobiliteinternationall.entites.Candidat;
-import tn.esprit.mobiliteinternationall.entites.Entretien;
+import com.supportportal.domain.Candidat;
+
+
 
 public interface ICandidatService {
 

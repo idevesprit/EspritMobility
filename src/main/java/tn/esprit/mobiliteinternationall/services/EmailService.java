@@ -1,64 +1,50 @@
-package tn.esprit.mobiliteinternationall.services;
+package com.supportportal.service;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import com.sun.mail.smtp.SMTPTransport;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Date;
+import java.util.Properties;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import tn.esprit.mobiliteinternationall.dto.MailRequest;
-import tn.esprit.mobiliteinternationall.dto.MailResponse;
-import javax.mail.internet.*;
+import static com.supportportal.constant.EmailConstant.*;
+import static javax.mail.Message.RecipientType.CC;
+import static javax.mail.Message.RecipientType.TO;
+
 @Service
 public class EmailService {
-	
-	@Autowired
-	private JavaMailSender sender;
-	
-	@Autowired
-	private Configuration config;
-	
-	public MailResponse sendEmail(MailRequest request, Map<String, Object> model) {
-		MailResponse response = new MailResponse();
-		MimeMessage message = sender.createMimeMessage();
-		try {
-			// set mediaType
-			MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
-					StandardCharsets.UTF_8.name());
-			// add attachment
-		//	helper.addAttachment("logo.png", new ClassPathResource("logo.png"));
 
-			Template t = config.getTemplate("email-template.ftl");
-			String html = FreeMarkerTemplateUtils.processTemplateIntoString(t, model);
+    public void sendNewPasswordEmail(String firstName, String password, String email) throws MessagingException {
+        Message message = createEmail(firstName, password, email);
+        SMTPTransport smtpTransport = (SMTPTransport) getEmailSession().getTransport(SIMPLE_MAIL_TRANSFER_PROTOCOL);
+        smtpTransport.connect(GMAIL_SMTP_SERVER, USERNAME, PASSWORD);
+        smtpTransport.sendMessage(message, message.getAllRecipients());
+        smtpTransport.close();
+    }
 
-			helper.setTo(request.getTo());
-			helper.setText(html, true);
-			helper.setSubject(request.getSubject());
-			helper.setFrom(request.getFrom());
-			sender.send(message);
+    private Message createEmail(String firstName, String password, String email) throws MessagingException {
+        Message message = new MimeMessage(getEmailSession());
+        message.setFrom(new InternetAddress(FROM_EMAIL));
+        message.setRecipients(TO, InternetAddress.parse(email, false));
+        message.setRecipients(CC, InternetAddress.parse(CC_EMAIL, false));
+        message.setSubject(EMAIL_SUBJECT);
+        message.setText("Hello " + firstName + ", \n \n Your new account password is: " + password + "\n \n The Support Team");
+        message.setSentDate(new Date());
+        message.saveChanges();
+        return message;
+    }
 
-			response.setMessage("mail send to : " + request.getTo());
-			response.setStatus(Boolean.TRUE);
-
-		} catch (MessagingException | IOException | TemplateException e) {
-			response.setMessage("Mail Sending failure : "+e.getMessage());
-			response.setStatus(Boolean.FALSE);
-		}
-
-		return response;
-	}
-	
-
+    private Session getEmailSession() {
+        Properties properties = System.getProperties();
+        properties.put(SMTP_HOST, GMAIL_SMTP_SERVER);
+        properties.put(SMTP_AUTH, true);
+        properties.put(SMTP_PORT, DEFAULT_PORT);
+        properties.put(SMTP_STARTTLS_ENABLE, true);
+        properties.put(SMTP_STARTTLS_REQUIRED, true);
+        return Session.getInstance(properties, null);
+    }
 }

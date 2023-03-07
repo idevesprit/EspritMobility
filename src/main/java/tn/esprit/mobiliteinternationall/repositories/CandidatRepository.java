@@ -1,8 +1,10 @@
-package tn.esprit.mobiliteinternationall.repositories;
+package com.supportportal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import tn.esprit.mobiliteinternationall.entites.Candidat;
-import tn.esprit.mobiliteinternationall.entites.RoleCandidat;
+
+import com.supportportal.domain.Candidat;
+import com.supportportal.domain.RoleCandidat;
+
 
 
 public interface CandidatRepository extends JpaRepository<Candidat,Integer> {
