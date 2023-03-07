@@ -1,4 +1,4 @@
-package tn.esprit.mobiliteinternationall.entites;
+package com.supportportal.domain;
 
 public enum StatutReclamation {
     Traité,Refusé,EnCoursDeTraitement,Satisfait,Décu

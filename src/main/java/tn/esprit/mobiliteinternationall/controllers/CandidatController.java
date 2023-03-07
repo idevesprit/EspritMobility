@@ -1,4 +1,4 @@
-package tn.esprit.mobiliteinternationall.controllers;
+package com.supportportal.resource;
 
 import java.util.List;
 
@@ -10,20 +10,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import tn.esprit.mobiliteinternationall.entites.Candidat;
-import tn.esprit.mobiliteinternationall.entites.Reclamation;
-import tn.esprit.mobiliteinternationall.services.ServiceCandidat;
+import com.supportportal.domain.Candidat;
+import com.supportportal.service.ServiceCandidat;
+
 
 @Controller
+@RequestMapping(path = { "/", "/candidat"})
 public class CandidatController {
 
 	@Autowired
 	ServiceCandidat serviceCandidat ;
 	
 	
-	 //http://localhost:9090/add-Candidat
+	 //http://localhost:8081/add-Candidat
     @PostMapping("/add-Candidat")
     @ResponseBody
     public Candidat addCandidat (@RequestBody Candidat r){
@@ -32,7 +34,7 @@ public class CandidatController {
         return r;
     } 	
     
- // http://localhost:9090/retrieve-all-Candidats
+ // http://localhost:8081/retrieve-all-Candidats
  	@GetMapping("/retrieve-all-Candidats")
  	@ResponseBody
  	public List<Candidat> getCandidats() {
@@ -42,21 +44,21 @@ public class CandidatController {
 
  	
 
- 	// http://localhost:9090/remove-Candidat/{idCandidat}
+ 	// http://localhost:8081/remove-Candidat/{idCandidat}
  	@DeleteMapping("/remove-Candidat/{idCandidat}")
  	@ResponseBody
  	public void removeReclamation(@PathVariable("idCandidat") int idCandidat) {
  		serviceCandidat.removeCandidat(idCandidat);
  	}
  	
- // http://localhost:9090/retrieve-Candidat/{id}
+ // http://localhost:8081/retrieve-Candidat/{id}
  	@GetMapping("/retrieve-Candidat/{id}")
  	@ResponseBody
  	public Candidat retrieveCandidat(@PathVariable("id") int id) {
  		return serviceCandidat.getCandidatId(id);
  	}
 
- 	// http://localhost:9090/modify-Candidat/{idCandidat}
+ 	// http://localhost:8081/modify-Candidat/{idCandidat}
  	@PutMapping("/modify-Candidat/{idCandidat}")
  	@ResponseBody
  	public Candidat updateCandidat(@RequestBody Candidat r) {
