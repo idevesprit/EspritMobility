@@ -1,40 +1,28 @@
 package tn.esprit.mobiliteinternationall.controllers;
 
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import tn.esprit.mobiliteinternationall.entites.Chat;
-import tn.esprit.mobiliteinternationall.services.IChatServices;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.stereotype.Controller;
+import tn.esprit.mobiliteinternationall.modelc.ChatMessage;
 
-import java.util.List;
-
-
-@AllArgsConstructor
-@RestController
-@RequestMapping("/chatt")
+@Controller
 public class ChatController {
 
-    @Autowired
-    IChatServices iChatServices;
+    @MessageMapping("/chat.sendMessage")
+    @SendTo("/topic/public")
+    public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+        return chatMessage;
+    }
 
-    @PostMapping("/addchat")
-    public Chat addChat(@RequestBody Chat ch){
-        return iChatServices.addChat(ch);}
-
-    @PutMapping("/updatechat")
-    public Chat updateChat(@RequestBody Chat ch) {
-        return iChatServices.updateChat(ch);}
-
-    @GetMapping("/chatbyid/{idChat}")
-    public Chat FindChatById(@PathVariable int idChat) {
-        return iChatServices.getChatById(idChat);}
-
-    @GetMapping("/allchat")
-    public List<Chat> FindAllChat() {
-        return iChatServices.getAllChat();}
-
-    @DeleteMapping("/remove/{idChat}")
-    public void removeChat(@PathVariable int idChat){
-        iChatServices.removeChat(idChat);}
+    @MessageMapping("/chat.addUser")
+    @SendTo("/topic/public")
+    public ChatMessage addUser(@Payload ChatMessage chatMessage,
+                               SimpMessageHeaderAccessor headerAccessor) {
+        // Add username in web socket session
+        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        return chatMessage;
+    }
 
 }

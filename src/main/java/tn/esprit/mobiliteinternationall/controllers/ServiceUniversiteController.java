@@ -68,9 +68,5 @@ public class ServiceUniversiteController {
     }
 
 
-    // @GetMapping("/getPrixTotals1/{typeService}")
-    // public Float getPrixTotals1(@PathVariable  Integer disponibilite) {
 
-    // return serviceUniversiteRepository.sum1(disponibilite);
-    //  }
 }

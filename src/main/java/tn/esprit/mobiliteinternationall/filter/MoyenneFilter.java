@@ -11,9 +11,9 @@ import java.io.IOException;
 @Component
 public class MoyenneFilter implements Filter {
 
-    Logger LOGGER = LoggerFactory.getLogger(MoyenneFilter.class);
+   Logger LOGGER = LoggerFactory.getLogger(MoyenneFilter.class);
 
-    @Override
+   @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         LOGGER.info("[MoyenneFilter] - Inside doFilter method");

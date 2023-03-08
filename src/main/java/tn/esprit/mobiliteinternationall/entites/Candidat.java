@@ -1,5 +1,6 @@
 package tn.esprit.mobiliteinternationall.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,8 +40,9 @@ public class Candidat implements Serializable {
     @OneToMany(mappedBy = "candidat")
     List<Reclamation> reclamations;
 
-  //  @OneToMany(mappedBy = "candidat")
- //  List<Commentaire> commentaires;
+    @OneToMany(mappedBy = "candidat")
+    @JsonIgnore
+    List<Commentaire> commentaires;
 
     @OneToMany(mappedBy = "candidat")
     List<Chat> chats;
@@ -53,7 +55,21 @@ public class Candidat implements Serializable {
 
     @OneToMany(mappedBy = "candidat")
     List<Favori> favoris;
+//unidirec
+    //like dislike
+   // @JsonIgnore
+   // @ManyToOne
+   // private LikeComment  likeC;
 
+   // @JsonIgnore
+   // @ManyToOne
+   // private DislikeComment dislikeC;
 
+//************************************************************************bidirectionnel
+    @OneToMany(mappedBy = "Likecommentaire")
+    private List<LikeComment> likeCS;
+
+    @OneToMany(mappedBy = "dislikecommentaire")
+    private  List<DislikeComment> dislikeCS;
 
 }

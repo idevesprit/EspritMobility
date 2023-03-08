@@ -1,5 +1,6 @@
 package tn.esprit.mobiliteinternationall.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,10 +23,20 @@ public class Commentaire implements Serializable {
     private String libelle;
     @Temporal(TemporalType.DATE)
     private Date dateCommentaire;
-    private int likeCommentaire;
-    private int dislikeCommentaire;
+   // private int likeCommentaire;
+   // private int dislikeCommentaire;
 
 
     @ManyToOne
     Candidat candidat;
+    //////////////////////add new
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    Offre offre;
+
+    @OneToMany(mappedBy = "Likecommentaire")
+    private List<LikeComment> likeCS;
+
+    @OneToMany(mappedBy = "dislikecommentaire")
+    private  List<DislikeComment> dislikeCS;
 }

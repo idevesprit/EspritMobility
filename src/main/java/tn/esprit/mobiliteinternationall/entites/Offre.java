@@ -39,4 +39,8 @@ public class Offre implements Serializable {
 
     @OneToMany(mappedBy = "offre")
     List<Favori> favoris;
+
+    //////////////////////add new
+    @OneToMany(mappedBy = "offre",cascade = CascadeType.ALL)
+    List<Commentaire> commentaires;
 }
