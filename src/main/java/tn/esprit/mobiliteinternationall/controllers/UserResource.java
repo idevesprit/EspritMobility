@@ -1,12 +1,5 @@
-package com.supportportal.resource;
+package tn.esprit.mobiliteinternationall.controllers;
 
-import com.supportportal.domain.HttpResponse;
-import com.supportportal.domain.User;
-import com.supportportal.domain.UserPrincipal;
-import com.supportportal.exception.ExceptionHandling;
-import com.supportportal.exception.domain.*;
-import com.supportportal.service.UserService;
-import com.supportportal.utility.JWTTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +9,18 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import tn.esprit.mobiliteinternationall.entites.HttpResponse;
+import tn.esprit.mobiliteinternationall.entites.User;
+import tn.esprit.mobiliteinternationall.entites.UserPrincipal;
+import tn.esprit.mobiliteinternationall.exception.domain.EmailExistException;
+import tn.esprit.mobiliteinternationall.exception.domain.EmailNotFoundException;
+import tn.esprit.mobiliteinternationall.exception.domain.NotAnImageFileException;
+import tn.esprit.mobiliteinternationall.exception.domain.UserNotFoundException;
+import tn.esprit.mobiliteinternationall.exception.domain.UsernameExistException;
+import tn.esprit.mobiliteinternationall.exceptiononall.exception.ExceptionHandling;
+import tn.esprit.mobiliteinternationall.services.UserService;
+import tn.esprit.mobiliteinternationall.utility.JWTTokenProvider;
 
 import javax.mail.MessagingException;
 
@@ -27,8 +32,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static com.supportportal.constant.FileConstant.*;
-import static com.supportportal.constant.SecurityConstant.JWT_TOKEN_HEADER;
+
 import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 
@@ -38,6 +42,7 @@ import static org.springframework.http.MediaType.IMAGE_JPEG_VALUE;
 public class UserResource extends ExceptionHandling {
     public static final String EMAIL_SENT = "An email with a new password was sent to: ";
     public static final String USER_DELETED_SUCCESSFULLY = "User deleted successfully";
+	private static final String JWT_TOKEN_HEADER = null;
     private AuthenticationManager authenticationManager;
     private UserService userService;
     private JWTTokenProvider jwtTokenProvider;
@@ -120,7 +125,7 @@ public class UserResource extends ExceptionHandling {
         User user = userService.updateProfileImage(username, profileImage);
         return new ResponseEntity<>(user, OK);
     }
-
+/*
     @GetMapping(path = "/image/{username}/{fileName}", produces = IMAGE_JPEG_VALUE)
     public byte[] getProfileImage(@PathVariable("username") String username, @PathVariable("fileName") String fileName) throws IOException {
         return Files.readAllBytes(Paths.get(USER_FOLDER + username + FORWARD_SLASH + fileName));
@@ -139,7 +144,7 @@ public class UserResource extends ExceptionHandling {
         }
         return byteArrayOutputStream.toByteArray();
     }
-
+*/
     private ResponseEntity<HttpResponse> response(HttpStatus httpStatus, String message) {
         return new ResponseEntity<>(new HttpResponse(httpStatus.value(), httpStatus, httpStatus.getReasonPhrase().toUpperCase(),
                 message), httpStatus);

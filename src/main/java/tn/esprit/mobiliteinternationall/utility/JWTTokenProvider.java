@@ -1,10 +1,6 @@
-package com.supportportal.utility;
+package tn.esprit.mobiliteinternationall.utility;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.JWTVerifier;
-import com.supportportal.domain.UserPrincipal;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +9,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.JWTVerifier;
+
+import tn.esprit.mobiliteinternationall.entites.UserPrincipal;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;

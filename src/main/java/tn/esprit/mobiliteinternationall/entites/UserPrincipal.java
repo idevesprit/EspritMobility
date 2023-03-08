@@ -1,4 +1,4 @@
-package com.supportportal.domain;
+package tn.esprit.mobiliteinternationall.entites;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

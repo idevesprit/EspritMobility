@@ -2,10 +2,10 @@ package tn.esprit.mobiliteinternationall.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit.mobiliteinternationall.entites.Candidat;
 import tn.esprit.mobiliteinternationall.entites.Commentaire;
-import tn.esprit.mobiliteinternationall.repositories.CandidatRepository;
+import tn.esprit.mobiliteinternationall.entities.Candidat;
 import tn.esprit.mobiliteinternationall.repositories.CommentaireRepository;
+import tn.esprit.mobiliteinternationall.repository.CandidatRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.supportportal.exception.domain;
+package tn.esprit.mobiliteinternationall.exception.domain;
 
 public class EmailExistException extends Exception {
     public EmailExistException(String message) {

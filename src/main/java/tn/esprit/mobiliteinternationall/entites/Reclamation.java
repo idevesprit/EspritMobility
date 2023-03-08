@@ -1,4 +1,4 @@
-package com.supportportal.domain;
+package tn.esprit.mobiliteinternationall.entites;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

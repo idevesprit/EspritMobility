@@ -1,6 +1,7 @@
 package tn.esprit.mobiliteinternationall.entites;
 
 import lombok.*;
+import tn.esprit.mobiliteinternationall.entities.Candidat;
 
 import javax.persistence.*;
 import java.io.Serializable;
