@@ -1,4 +1,4 @@
-package com.supportportal.constant;
+package tn.esprit.mobiliteinternationall.constant;
 
 public class EmailConstant {
     public static final String SIMPLE_MAIL_TRANSFER_PROTOCOL = "smtps";

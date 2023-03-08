@@ -1,4 +1,4 @@
-package com.supportportal.repository;
+package tn.esprit.mobiliteinternationall.repositories;
 
 import com.supportportal.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

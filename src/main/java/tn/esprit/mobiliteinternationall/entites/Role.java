@@ -1,6 +1,10 @@
-package com.supportportal.enumeration;
+package tn.esprit.mobiliteinternationall.entites;
 
-import static com.supportportal.constant.Authority.*;
+import static tn.esprit.mobiliteinternationall.constant.Authority.ADMIN_AUTHORITIES;
+import static tn.esprit.mobiliteinternationall.constant.Authority.CANDIDAT_AUTHORITIES;
+import static tn.esprit.mobiliteinternationall.constant.Authority.HR_AUTHORITIES;
+import static tn.esprit.mobiliteinternationall.constant.Authority.SUPER_ADMIN_AUTHORITIES;
+import static tn.esprit.mobiliteinternationall.constant.Authority.USER_AUTHORITIES;
 
 public enum Role {
     ROLE_USER(USER_AUTHORITIES),

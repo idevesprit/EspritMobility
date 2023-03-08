@@ -1,8 +1,13 @@
-package com.supportportal.service;
+package tn.esprit.mobiliteinternationall.services;
 
-import com.supportportal.domain.User;
-import com.supportportal.exception.domain.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import tn.esprit.mobiliteinternationall.entites.User;
+import tn.esprit.mobiliteinternationall.exception.domain.EmailExistException;
+import tn.esprit.mobiliteinternationall.exception.domain.EmailNotFoundException;
+import tn.esprit.mobiliteinternationall.exception.domain.NotAnImageFileException;
+import tn.esprit.mobiliteinternationall.exception.domain.UserNotFoundException;
+import tn.esprit.mobiliteinternationall.exception.domain.UsernameExistException;
 
 import javax.mail.MessagingException;
 import java.io.IOException;

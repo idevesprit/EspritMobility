@@ -1,4 +1,4 @@
-package com.supportportal.service;
+package tn.esprit.mobiliteinternationall.services;
 
 import com.sun.mail.smtp.SMTPTransport;
 import org.springframework.stereotype.Service;

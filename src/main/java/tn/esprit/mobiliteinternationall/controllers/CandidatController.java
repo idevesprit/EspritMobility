@@ -1,4 +1,4 @@
-package com.supportportal.resource;
+package tn.esprit.mobiliteinternationall.controllers;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.supportportal.domain.Candidat;
-import com.supportportal.service.ServiceCandidat;
+import tn.esprit.mobiliteinternationall.entites.Candidat;
+
 
 
 @Controller
@@ -22,7 +22,7 @@ import com.supportportal.service.ServiceCandidat;
 public class CandidatController {
 
 	@Autowired
-	ServiceCandidat serviceCandidat ;
+	tn.esprit.mobiliteinternationall.services.ServiceCandidat serviceCandidat ;
 	
 	
 	 //http://localhost:8081/add-Candidat

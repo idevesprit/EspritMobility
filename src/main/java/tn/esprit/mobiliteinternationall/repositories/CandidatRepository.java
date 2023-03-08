@@ -1,9 +1,9 @@
-package com.supportportal.repository;
+package tn.esprit.mobiliteinternationall.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.supportportal.domain.Candidat;
-import com.supportportal.domain.RoleCandidat;
+import tn.esprit.mobiliteinternationall.entities.Candidat;
+import tn.esprit.mobiliteinternationall.entities.RoleCandidat;
 
 
 

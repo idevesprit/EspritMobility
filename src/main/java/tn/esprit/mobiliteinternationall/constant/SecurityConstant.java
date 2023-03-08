@@ -1,5 +1,5 @@
 //routing li aandek w token verifié wale
-package com.supportportal.constant;
+package tn.esprit.mobiliteinternationall.constant;
 
 public class SecurityConstant {
     public static final long EXPIRATION_TIME = 432_000_000; // 5 days expressed in milliseconds

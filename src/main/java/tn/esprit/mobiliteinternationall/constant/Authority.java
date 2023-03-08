@@ -1,5 +1,5 @@
 // les roles li mawjoudin f projet
-package com.supportportal.constant;
+package tn.esprit.mobiliteinternationall.constant;
 
 public class Authority {
     public static final String[] USER_AUTHORITIES = { "user:read" };

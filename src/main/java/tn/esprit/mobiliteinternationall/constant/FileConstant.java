@@ -1,5 +1,5 @@
 //image
-package com.supportportal.constant;
+package tn.esprit.mobiliteinternationall.constant;
 
 public class FileConstant {
     public static final String USER_IMAGE_PATH = "/user/image/";

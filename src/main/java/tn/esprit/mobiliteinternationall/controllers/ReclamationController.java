@@ -1,4 +1,4 @@
-package com.supportportal.resource;
+package tn.esprit.mobiliteinternationall.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.supportportal.domain.Reclamation;
-import com.supportportal.repository.ReclamationRepository;
-import com.supportportal.service.ReclamationService;
+import tn.esprit.mobiliteinternationall.entites.Reclamation;
+import tn.esprit.mobiliteinternationall.repositories.ReclamationRepository;
+import tn.esprit.mobiliteinternationall.services.ReclamationService;
 
 
 @RestController
