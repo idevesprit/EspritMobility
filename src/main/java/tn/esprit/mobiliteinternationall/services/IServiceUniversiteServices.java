@@ -21,4 +21,7 @@ public interface IServiceUniversiteServices {
   public   void assignServiceUniversiteToUniversite(Integer idService, Integer idUniversite);
 
 
+    float calculateTotalPrice();
+
+    float getTotalPriceForService(ServiceUniversite serviceUniversite);
 }

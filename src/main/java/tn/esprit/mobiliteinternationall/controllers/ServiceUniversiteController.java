@@ -3,7 +3,10 @@ package tn.esprit.mobiliteinternationall.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.mobiliteinternationall.entites.ResourceNotFoundException;
 import tn.esprit.mobiliteinternationall.services.IServiceUniversiteServices;
 import tn.esprit.mobiliteinternationall.entites.ServiceUniversite;
 import tn.esprit.mobiliteinternationall.entites.TypeService;
@@ -67,10 +70,30 @@ public class ServiceUniversiteController {
         return serviceUniversiteRepository.typeService(typeService);
     }
 
+    @PostMapping("/tester-service/{idService}")
+    public ResponseEntity<String> testerService(@PathVariable("idService") Integer idService) {
+        ServiceUniversite serviceUniversite = serviceUniversiteRepository.findById(idService).orElseThrow(() -> new ResourceNotFoundException("ServiceUniversite", "idService", idService));
 
-    // @GetMapping("/getPrixTotals1/{typeService}")
-    // public Float getPrixTotals1(@PathVariable  Integer disponibilite) {
+        if (serviceUniversite.getDisponibilite() == 0) {
+            return new ResponseEntity<>("Le service est indisponible", HttpStatus.BAD_REQUEST);
+        }
 
-    // return serviceUniversiteRepository.sum1(disponibilite);
-    //  }
+        //serviceUniversite.setDisponibilite(serviceUniversite.getDisponibilite() - 1);
+        // serviceUniversiteRepository.save( serviceUniversite);
+        else {
+            return new ResponseEntity<>("le Service est encore disponible", HttpStatus.OK);
+        }
+
+    }
+    @GetMapping("/total-price")
+    public ResponseEntity<Float> calculateTotalPrice() {
+        float totalPrice = (float) iServiceUniversiteServices.calculateTotalPrice();
+        return ResponseEntity.ok(totalPrice);
+    }
+
+    @GetMapping("/totalPrice/{idService}")
+    public float getTotalPriceForService(@PathVariable Integer idService) {
+        ServiceUniversite service = serviceUniversiteRepository.findById(idService).get();
+        return iServiceUniversiteServices.getTotalPriceForService(service);
+    }
 }

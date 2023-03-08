@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,8 +29,8 @@ public class ServiceUniversite implements Serializable {
     @ManyToOne
     Universite universite;
 
-    @ManyToOne
-    Candidat candidat;
+    @OneToMany(mappedBy = "serviceUniversite")
+    List<Candidat> candidats;
 
 
 

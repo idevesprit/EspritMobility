@@ -33,8 +33,8 @@ public class Candidat implements Serializable {
     @OneToMany(mappedBy = "candidat")
     List<Candidature> candidatures;
 
-   // @OneToMany(mappedBy = "candidat")
-  //  List<ServiceUniversite> serviceList;
+    @ManyToOne
+    ServiceUniversite serviceUniversite;
 
     @OneToMany(mappedBy = "candidat")
     List<Reclamation> reclamations;
