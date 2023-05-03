@@ -1,5 +1,6 @@
 package tn.esprit.mobiliteinternationall.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,7 +29,7 @@ public class Candidature implements Serializable {
     @Column(name = "LettreDeMotivation")
     @Lob
     private byte[] lettreMotivation;
-
+    @Enumerated(EnumType.STRING)
     private StatutCandidature statutCandidature;
 
     private Float moyenne;
@@ -42,8 +43,10 @@ public class Candidature implements Serializable {
     @Transient
     private int nbrAnneeTravail;
 */
+    @JsonIgnore
     @ManyToOne
     Candidat candidat;
+    @JsonIgnore
 
     @ManyToOne
     Offre offre;

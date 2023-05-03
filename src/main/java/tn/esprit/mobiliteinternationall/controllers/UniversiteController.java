@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/universite")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class UniversiteController {
     private IServiceUniversite iServiceUniversite;
 
@@ -33,8 +34,8 @@ public class UniversiteController {
     public List<Universite> getAllUniversite() {
         return iServiceUniversite.getAllUniversite();
     }
-@DeleteMapping("/delte/{idUniversite}")
-    public void removeUniversite(Integer idUniversite) {
+@DeleteMapping("/delete/{idUniversite}")
+    public void removeUniversite(@PathVariable Integer idUniversite) {
         iServiceUniversite.removeUniversite(idUniversite);
     }
 }

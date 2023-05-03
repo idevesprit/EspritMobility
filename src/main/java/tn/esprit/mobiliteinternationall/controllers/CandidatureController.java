@@ -13,6 +13,7 @@ import tn.esprit.mobiliteinternationall.ResponseData;
 import tn.esprit.mobiliteinternationall.dto.MailRequest;
 import tn.esprit.mobiliteinternationall.dto.MailResponse;
 import tn.esprit.mobiliteinternationall.entites.Candidature;
+import tn.esprit.mobiliteinternationall.entites.Offre;
 import tn.esprit.mobiliteinternationall.entites.RoleCandidat;
 import tn.esprit.mobiliteinternationall.entites.StatutCandidature;
 import tn.esprit.mobiliteinternationall.repositories.CandidatureRepository;
@@ -28,6 +29,8 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/candidature")
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class CandidatureController {
 
     Logger LOGGER = LoggerFactory.getLogger(CandidatureController.class);
@@ -139,8 +142,10 @@ public class CandidatureController {
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
        }
    }
+    @GetMapping("/getcondidaturebyuniversite/{id_universite}")
+    public List<Candidature> getcondidaturebyuniversite(@PathVariable Integer id_universite) {
+        return candidatureRepository.getcondidaturebyuniversite(id_universite);
 
-
-
+    }
 
 }

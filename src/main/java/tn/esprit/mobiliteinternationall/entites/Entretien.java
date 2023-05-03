@@ -1,5 +1,6 @@
 package tn.esprit.mobiliteinternationall.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,10 @@ public class Entretien implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatutEntretien statutEntretien;
 
+    @JsonIgnore
     @ManyToOne
     Universite universite;
+    @JsonIgnore
 
     @ManyToOne
     Candidature candidature;

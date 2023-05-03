@@ -1,5 +1,6 @@
 package tn.esprit.mobiliteinternationall.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,10 @@ public class Universite implements Serializable {
     private int idUniversite;
     private String nomUniversite;
     private String adresseUniversite;
+    private String mail;
+    private String password;
+    private String description;
+
     private String pays;
     private String specialite;
     @Enumerated(EnumType.STRING)
@@ -27,10 +32,10 @@ public class Universite implements Serializable {
 
   //  @OneToMany(mappedBy = "universite")
   //  List<Service> services;
-
+@JsonIgnore
     @OneToMany(mappedBy = "universite")
     List<Offre> offreList;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "universite")
     List<Entretien> entretienList;
 

@@ -18,7 +18,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/entretien")
 @AllArgsConstructor
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class EntretienController {
 
     private IServiceEntretien iServiceEntretien;

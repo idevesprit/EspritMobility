@@ -59,7 +59,7 @@ public class IServiceOffreIMP implements IServiceOffre {
     }
 
     @Override
-    @Scheduled(fixedDelay = 100000000)
+    @Scheduled(fixedDelay = 5000)
     public void changerStatutOffre() {
         List<Offre> offreList = offreRepository.findAll();
 
